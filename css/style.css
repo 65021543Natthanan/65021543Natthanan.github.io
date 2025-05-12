@@ -9,6 +9,7 @@ body {
     color: #333;
     line-height: 1.6;
     overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอนที่ไม่ต้องการ */
+     font-size: 16px;
 }
 
 .container {
@@ -36,7 +37,7 @@ nav {
     align-items: center;
     /* padding: 1.66667% 0; 20px / 1200px * 100% */
     width: 100%; /* ทำให้ nav ขยายเต็มความกว้างของ header */
-    max-width: 1200px; /* จำกัดความกว้างสูงสุดถ้าต้องการ */
+    max-width: 100%; /* จำกัดความกว้างสูงสุดถ้าต้องการ */
 }
 
 .nav-links {
@@ -70,18 +71,18 @@ nav {
     color: #bbbcbc;
 }
 
-.burger {
+/* .burger {
     display: none;
     cursor: pointer;
 }
 
 .burger div {
-    width: 2.08333%; /* 25px / 1200px * 100% */
-    height: 0.25%; /* 3px / 1200px * 100% */
+    width: 2.08333%; 
+    height: 0.25%; 
     background-color: #333;
-    margin: 0.41667% 0; /* 5px / 1200px * 100% (บน/ล่าง), 0 (ซ้าย/ขวา - ปรับตามต้องการ) */
+    margin: 0.41667% 0; 
     transition: all 0.3s ease;
-}
+} */
 
 /* Hero Section */
 .hero {
@@ -130,7 +131,7 @@ nav {
 }
 
 .hero-image img {
-    max-width: 400px;
+    max-width: 80%;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: floatImage 3s ease-in-out infinite alternate;
@@ -163,12 +164,13 @@ nav {
 }
 
 .about-image img {
-    max-width: 600px;
+    max-width: 85%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
+    /* max-width: 50%; */
     max-width: 500px;
     text-align: left;
 }
@@ -286,40 +288,45 @@ nav {
 
 
 
-
 /* awards Section */
 .awards {
-    padding: 80px 0;
+    padding: 80px 0; /* สามารถปรับให้ responsive ได้อีก เช่น padding: clamp(40px, 8vw, 80px) 0; */
     background-color: #0f0b19;
     text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* จัด awards-grid ให้อยู่ตรงกลางแนวนอน */
+    align-items: center; /* จัด awards-grid ให้อยู่ตรงกลางแนวตั้ง (ถ้า awards มีความสูง) */
     min-height: auto; /* ปรับความสูงขั้นต่ำเป็น auto */
 }
 
 .awards h2 {
     color: #ffffff;
-    margin-bottom: 40px;
+    margin-bottom: 40px; /* สามารถปรับให้ responsive ได้อีก */
+    /* ทำให้ h2 responsive โดยใช้ clamp() จากคำตอบก่อนหน้า */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); 
 }
 
+/* awards-grid (สำหรับหน้าจอเล็ก - Mobile-first: เรียงการ์ดลงมาเป็นแนวตั้ง) */
 .awards-grid {
-    display: flex; /* ให้เรียงต่อกันในแนวนอน */
-    justify-content: space-around; /* จัดให้มีการเว้นระยะห่างเท่ากันระหว่างการ์ด */
-    align-items: flex-start; /* จัดให้เริ่มต้นที่ด้านบน */
+    display: flex;
+    flex-direction: column; /* เรียงการ์ดลงมาเป็นแนวตั้ง */
+    align-items: center; /* จัดการ์ดให้อยู่กึ่งกลางในแนวนอนเมื่อเรียงลงมา */
     margin-top: 40px;
-    width: 90%; /* กำหนดความกว้างของ Container ให้แคบลง (ปรับตามต้องการ) */
-    max-width: 1200px; /* กำหนดความกว้างสูงสุด */
+    padding: 0 20px; /* เพิ่ม padding ด้านข้างให้กับ grid เพื่อเว้นระยะห่างจากการขอบจอ */
+    width: 100%; /* ให้ grid ใช้ความกว้างเต็มพื้นที่ของ parent (.awards) */
+    /* max-height: 50%; ถูกลบออก เนื่องจากอาจทำให้เนื้อหาถูกตัดออกไป */
 }
 
+/* awards-card (สำหรับหน้าจอเล็ก - Mobile-first: แต่ละการ์ดใช้พื้นที่เกือบเต็มความกว้าง) */
 .awards-card {
     background-color: #110d16;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    width: calc(33.33% - 20px); /* แบ่งพื้นที่ให้แต่ละการ์ดมีขนาดประมาณ 1/3 และมี Margin */
-    margin: 0 10px; /* เพิ่ม Margin ด้านข้างเพื่อเว้นระยะห่าง */
+    width: 100%; /* แต่ละการ์ดใช้ความกว้างเต็มพื้นที่ของ .awards-grid (ซึ่งมี padding) */
+    max-width: 400px; /* จำกัดความกว้างสูงสุดของการ์ดเดี่ยว เพื่อให้อ่านง่ายบนหน้าจอแคบๆ */
+    margin: 0 0 20px 0; /* เพิ่ม margin ด้านล่างเพื่อเว้นระยะห่างระหว่างการ์ดที่เรียงซ้อนกัน */
     text-align: left;
 }
 
@@ -327,6 +334,23 @@ nav {
     transform: translateY(-5px);
 }
 
+/* awards-card h3 และ p (ใช้ clamp() จากคำตอบก่อนหน้า) */
+.awards-card h3 {
+    padding: 20px;
+    margin: 0;
+    font-size: clamp(1rem, 2.5vw, 1.5rem); 
+    color: #ffffff;
+}
+
+.awards-card p {
+    padding: 0 20px 20px;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.4;
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+/* สไตล์ของรูปภาพและตัวควบคุมสไลด์ (คงเดิมเพราะ Responsive อยู่แล้ว) */
 .award-images {
     position: relative;
     overflow: hidden;
@@ -394,22 +418,43 @@ nav {
     background-color: #007bff;
 }
 
-.awards-card h3 {
-    padding: 20px;
-    margin: 0;
-    font-size: 1.2em; /* ปรับขนาดตัวอักษรให้เล็กลง */
-    color: #ffffff;
+
+/* Media Query สำหรับหน้าจอขนาดกลาง (เช่น แท็บเล็ต) - 2 การ์ดต่อแถว */
+@media (min-width: 768px) {
+    .awards-grid {
+        flex-direction: row; /* เปลี่ยนการจัดเรียงเป็นการ์ดเรียงแนวนอน */
+        flex-wrap: wrap; /* ยอมให้การ์ดขึ้นบรรทัดใหม่ได้ */
+        justify-content: center; /* จัดการ์ดให้อยู่กึ่งกลางเมื่อมีการขึ้นบรรทัดใหม่ */
+        align-items: stretch; /* ทำให้การ์ดในแถวเดียวกันมีความสูงเท่ากัน */
+        padding: 0 20px; /* คง padding หรือปรับตามความเหมาะสม */
+        max-width: 960px; /* กำหนดความกว้างสูงสุดของ grid เพื่อให้อ่านง่าย */
+        margin-left: auto; /* จัด grid ให้อยู่กึ่งกลางในแนวนอน */
+        margin-right: auto; /* จัด grid ให้อยู่กึ่งกลางในแนวนอน */
+    }
+
+    .awards-card {
+        /* สำหรับ 2 การ์ดต่อแถว โดยเว้นระยะห่าง 20px ระหว่างการ์ด และ 20px ขอบนอก */
+        width: calc(50% - 40px); /* 50% ของความกว้าง grid หักออก 40px (สำหรับ margin ซ้ายขวา) */
+        margin: 20px; /* กำหนด margin รอบด้าน 20px ให้แต่ละการ์ด */
+        /* จะทำให้เกิดช่องว่าง 40px ระหว่างการ์ดในแนวนอน และ 40px ระหว่างแถวในแนวตั้ง */
+    }
 }
 
-.awards-card p {
-    padding: 0 20px 20px;
-    margin: 0;
-    color: #ffffff;
-    line-height: 1.4; /* ปรับความสูงบรรทัดให้แคบลง */
-    font-size: 0.9em; /* ปรับขนาดตัวอักษรให้เล็กลง */
+/* Media Query สำหรับหน้าจอขนาดใหญ่ (เช่น เดสก์ท็อป) - 3 การ์ดต่อแถว (สไตล์เดิมที่ปรับปรุง) */
+@media (min-width: 1024px) {
+    .awards-grid {
+        justify-content: space-around; /* จัดให้มีช่องว่างรอบๆ การ์ด (หรือ space-between) */
+        max-width: 1200px; /* เพิ่มความกว้างสูงสุดของ grid สำหรับเดสก์ท็อป */
+    }
+
+    .awards-card {
+        /* สำหรับ 3 การ์ดต่อแถว โดยเว้นระยะห่าง 20px ระหว่างการ์ด และ 20px ขอบนอก */
+        width: calc(33.33% - 40px); /* 33.33% ของความกว้าง grid หักออก 40px (สำหรับ margin ซ้ายขวา) */
+        margin: 20px; /* กำหนด margin รอบด้าน 20px ให้แต่ละการ์ด */
+    }
 }
 
-/* Activities Section */
+/* Activities Sectiong */
 .activities {
     padding: 80px 0;
     background-color: #0f0b19;
@@ -718,9 +763,9 @@ footer .container {
         margin: 20px 0;
     }
 
-    .burger {
+    /* .burger {
         display: block;
-    }
+    } */
 
     .hero .container {
         flex-direction: column;
