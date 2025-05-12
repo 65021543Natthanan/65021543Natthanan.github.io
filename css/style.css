@@ -409,13 +409,6 @@ nav {
     font-size: 0.9em; /* ปรับขนาดตัวอักษรให้เล็กลง */
 }
 
-
-
-
-
-
-
-
 /* Activities Section */
 .activities {
     padding: 80px 0;
@@ -423,12 +416,10 @@ nav {
     text-align: center;
     overflow: hidden; /* ป้องกันการล้นของคอนเทนเนอร์ */
 }
-
 .activities h2 {
     color: #ffffff;
     margin-bottom: 30px;
 }
-
 .activities-carousel {
     position: relative;
     max-width: 80%;
@@ -440,7 +431,6 @@ nav {
     transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* เพิ่ม easing ให้สมูท */
     padding: 20px 0; /* เพิ่ม padding บนล่าง */
 }
-
 .activity-card {
     background-color: #110d16;
     border-radius: 10px;
@@ -459,21 +449,15 @@ nav {
 
     
 }
-
 .activity-card p{
     text-align: left;
 
 }
-
-
-
-
 .activity-card.active {
     transform: scale(1.2) !important; /* ทำให้การ์ดตรงกลางนูนขึ้น */
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4) !important;
     opacity: 1 !important;
 }
-
 .activity-card img {
     width: 100%;
     height: auto;
@@ -486,7 +470,6 @@ nav {
     color: #ffffff;
     margin-bottom: 10px;
 }
-
 .activity-card p {
     color: #ddd;
     font-size: 0.9em;
@@ -503,7 +486,6 @@ nav {
     padding: 0 20px;
     transform: translateY(-50%);
 }
-
 .carousel-controls button {
     background: transparent;
     border: none;
@@ -517,7 +499,6 @@ nav {
 .carousel-controls button:hover {
     color: #007bff;
 }
-
 /* ลูกเล่นเพิ่มเติม */
 .activities::before,
 .activities::after {
@@ -526,15 +507,19 @@ nav {
     top: 0;
     bottom: 0;
     width: 50px;
-    background: linear-gradient(to right, #0f0b19, transparent);
+    /* background: linear-gradient(to right, #0f0b19, transparent); */
     z-index: 1;
 }
-
 .activities::after {
     left: auto;
     right: 0;
     background: linear-gradient(to left, #0f0b19, transparent);
 }
+
+
+
+
+
 
 
 /* Contact Section */
